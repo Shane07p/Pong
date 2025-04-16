@@ -1,31 +1,70 @@
-# Part 1: Game Runner
+# Pong Game - Part 1: Game Runner
+
+This is **Part 1** of a modular Pong game written in pure JavaScript and HTML5 canvas. It sets up a reusable game loop engine and compatibility layer for older browsers.
+
+---
+
+## 🕹 Overview
 
 This part sets up the basic game runner for our Pong game. It includes everything needed to start the game loop and render updates at 60 frames per second.
 
-## What's in This Part
+The `Game` module is a simple engine designed to handle:
+
+- **Cross-browser compatibility**
+- **Game loop (update + render)**
+- **Double-buffered canvas drawing**
+- **Keyboard input**
+- **Basic stats display (FPS, frame time, etc.)**
+
+This allows any canvas-based game (like Pong) to focus purely on gameplay logic.
+
+---
+
+## ✅ What's in This Part
 
 - Creates a canvas and sets its size
 - Sets up double-buffering (front and back canvases) to avoid flickering
-- Maintains a consistent 60 FPS loop
+- Maintains a consistent 60 FPS loop using `requestAnimationFrame()`
 - Separates the `update()` and `draw()` steps for better control
-- Adds keyboard event listeners
-- Optionally shows FPS and timing stats
+- Adds keyboard event listeners (`keydown` / `keyup`)
+- Optionally shows FPS and timing stats in the top-left corner
 
-## How It Works
+---
 
-We have a `Game.Runner` that handles the main loop. It uses `requestAnimationFrame()` to sync the rendering and ensures we don't exceed the target FPS.
+## ⚙️ How It Works
+
+We use a `Game.Runner` object to handle the main loop.
 
 When `initialize()` is called:
-- It checks for browser compatibility (like canvas support).
-- It creates both the front (visible) and back (off-screen) canvas.
-- Sets up a drawing context and starts the game loop.
-- Attaches event listeners for keydown/keyup to support player controls.
 
-Stats (like FPS) are shown in the top-left if enabled.
+- It checks for browser compatibility (like canvas and audio support).
+- Creates both the front (visible) and back (off-screen) canvases.
+- Sets up drawing context and starts the game loop.
+- Attaches event listeners for keydown/keyup to support player input.
+- Optionally displays debug stats (like FPS, frame time, etc.).
 
-## Running It
+The loop is maintained at 60fps using `requestAnimationFrame`, and avoids screen tearing with double buffering.
 
-Just open the `index.html` in your browser to see the game loop in action. You won’t see the actual game yet — just a black screen being redrawn at 60fps — but it means the runner is working.
+---
 
-```bash
-open part1/index.html
+## 🔍 Features
+
+- `Game.Runner`: Manages timing, input, drawing, and stats
+- Polyfills for:
+  - `Function.prototype.bind`
+  - `Object.create`
+  - `Object.construct` (custom helper)
+  - `Object.extend`
+- Canvas and audio support detection
+- Basic user-agent parsing for compatibility features
+
+---
+
+## 🚀 Running
+
+To use the runner for your game:
+
+```js
+Game.ready(function() {
+  var pong = Game.start('game', Pong);
+});
