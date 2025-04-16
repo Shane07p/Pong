@@ -1,9 +1,9 @@
-# JavaScript Pong - Part 3: Add Paddle Physics 
+# 🏓 JavaScript Pong - Part 3: Add Paddle Physics
 
 Welcome to **Part 3** of the JavaScript Pong series!  
 This part adds paddles to the game and introduces basic collision between the ball and the paddles.
 
-##  What’s in Part 3
+## 🔧 What’s in Part 3
 
 - Created a **Paddle** class with position, size, and movement speed.
 - Implemented **keyboard controls** for player movement.
@@ -11,7 +11,7 @@ This part adds paddles to the game and introduces basic collision between the ba
 - Reflected the ball’s velocity when it hits the paddle.
 - Limited paddle movement within the canvas bounds.
 
-##  Files Updated
+## 📂 Files Updated
 
 - `index.html`  
   No major changes here — still links to the updated `pong.js`.
@@ -23,9 +23,7 @@ This part adds paddles to the game and introduces basic collision between the ba
   - Added collision check between ball and paddle.
   - Ball bounces off the paddle using velocity inversion.
 
-##  Logic Breakdown
-
-### Paddle Movement
+### 🎮 Paddle Movement
 
 ```js
 if (keyboard.left) {
