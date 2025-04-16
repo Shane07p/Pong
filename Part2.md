@@ -37,11 +37,3 @@ We’ve added the logic that allows the ball to move and bounce off the walls. H
   ```js
   ball.x += ball.dx * dt;
   ball.y += ball.dy * dt;  
-### ✅ `index.html`
-
-- Mostly unchanged
-- Still includes:
-  ```html
-  <canvas id="game"></canvas>
-  <script src="game.js"></script>
-  <script src="pong.js"></script>
