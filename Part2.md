@@ -1,19 +1,26 @@
-# JavaScript Pong - Part 2: Add Ball Bouncing 
+# JavaScript Pong - Part 2: Add Ball Bouncing
 
 Welcome to **Part 2** of the JavaScript Pong project!  
-In this stage, we introduce basic ball physics to bring the game to life — now the ball moves and bounces around the play area!
+In this stage, we introduce **basic ball physics** to bring the game to life — now the ball moves and bounces around the court!
 
-##  What’s New in Part 2
+---
 
-In this part, we:
+## 🎯 What’s New in Part 2
 
-- Added a **Ball** object with position, velocity, and radius.
-- Implemented **movement** based on velocity and time delta.
-- Made the ball **bounce off the top and bottom walls**.
-- Rendered the ball using `canvas` API.
+We’ve added the logic that allows the ball to move and bounce off the walls. Here's what we implemented:
 
-##  Files Updated
+- Created a `Ball` object with:
+  - Position (`x`, `y`)
+  - Velocity (`dx`, `dy`)
+  - Radius and color
+- The ball moves using delta time (`dt`)
+- Bounces off the court walls (top, bottom, left, right)
+- Uses random colors and movement directions
+- Rendered as a circle using the Canvas API
 
+---
+
+## 🔧 Files Updated
 - `index.html`  
   Remains mostly unchanged, except for linking to the updated `pong.js`.
 
@@ -29,4 +36,12 @@ In this part, we:
 - The ball moves using the formula:
   ```js
   ball.x += ball.dx * dt;
-  ball.y += ball.dy * dt;
+  ball.y += ball.dy * dt;  
+### ✅ `index.html`
+
+- Mostly unchanged
+- Still includes:
+  ```html
+  <canvas id="game"></canvas>
+  <script src="game.js"></script>
+  <script src="pong.js"></script>
