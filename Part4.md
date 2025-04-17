@@ -1,4 +1,4 @@
-# 🎮 Part 4: Add AI Opponent 🤖
+# 🎮 Part 5: Add AI Opponent 🤖
 
 ## 🎯 Objective
 Introduce a basic AI-controlled paddle that competes against the player, creating a single-player game mode.
