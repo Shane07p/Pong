@@ -1,35 +1,62 @@
-# 🎮 Pong Game Documentation
+# 🎮 Part 5: Add AI Opponent 🤖
 
-## 🏆 Part 5: Add Scoring System 
+## 🎯 Objective
+Introduce a basic AI-controlled paddle that competes against the player, creating a single-player game mode.
 
-### 🎯 Objective
-Add scoring and create a complete playable game loop where players can win or lose.
+## ✨ Features Implemented
+- Added AI paddle at the top of the canvas
+- Simple tracking behavior based on ball direction
+- Collision detection for AI paddle
+- Ball now interacts with both player and AI paddles
+- Boundary checking for AI movement
 
-### ✨ Features Implemented
-- Introduced `playerScore` and `aiScore` to track scores 
-- Added a reset mechanism to reposition the ball after each point 
-- Displayed scores on screen using canvas text rendering 
-- Implemented score detection:
-  - Player scores when ball goes off the top
-  - AI scores when ball goes off the bottom
+## ⚙️ How It Works
 
-### ⚙️ How It Works
-- Ball crossing top/bottom edge awards point to opponent
-- Ball resets to center after each point
-- Scores displayed at center of screen
+### AI Movement Logic
+The AI paddle follows these rules:
+1. Monitors the ball's horizontal direction (`ball.dx`)
+2. Moves left when ball is moving left
+3. Moves right when ball is moving right
+4. Stays within canvas boundaries
 
-## 🤖 Computer AI Implementation 
+### Collision System
+- When ball contacts AI paddle:
+  - Bounces downward (toward player)
+  - Maintains realistic physics
 
-### 🧩 General Strategy
-Two-part AI system:
-1. **Reaction Time**: Artificial delay before responding
-2. **Accuracy**: Random error factor in predictions
+## 📝 Code Implementation
 
-### 🎚️ Difficulty Levels
-```js
-Levels: [
-  {aiReaction: 0.2, aiError: 40},   // 0: ai is losing by 8
-  {aiReaction: 0.3, aiError: 50},   // 1: ai is losing by 7
-  // ... (other levels)
-  {aiReaction: 1.8, aiError: 200}   // 16: ai is winning by 8
-]
+```javascript
+// AI Paddle initialization
+const aiPaddle = {
+  x: canvas.width / 2,
+  y: 30,
+  width: 100,
+  height: 15,
+  speed: 5,
+  color: '#FF5555'
+};
+
+// AI Movement Update
+function updateAI() {
+  if (ball.dx < 0 && aiPaddle.x > 0) {
+    aiPaddle.x -= aiPaddle.speed; // Move left
+  } else if (ball.dx > 0 && aiPaddle.x < canvas.width - aiPaddle.width) {
+    aiPaddle.x += aiPaddle.speed; // Move right
+  }
+}
+
+// Enhanced collision detection
+function checkAICollision() {
+  if (
+    ball.y - ball.radius <= aiPaddle.y + aiPaddle.height &&
+    ball.y + ball.radius >= aiPaddle.y &&
+    ball.x + ball.radius >= aiPaddle.x &&
+    ball.x - ball.radius <= aiPaddle.x + aiPaddle.width
+  ) {
+    ball.dy = Math.abs(ball.dy); // Reverse vertical direction
+    // Optional: Add speed variation based on hit position
+    const hitPosition = (ball.x - aiPaddle.x) / aiPaddle.width;
+    ball.dx += (hitPosition - 0.5) * 2; // -1 to 1 range
+  }
+}
