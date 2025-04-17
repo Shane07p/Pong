@@ -1,29 +1,29 @@
 # 🎮 Pong Game Documentation
 
-## 🏆 Part 5: Add Scoring System ⚽➡️🥅
+## 🏆 Part 5: Add Scoring System 
 
 ### 🎯 Objective
 Add scoring and create a complete playable game loop where players can win or lose.
 
 ### ✨ Features Implemented
-- Introduced `playerScore` and `aiScore` to track scores 📊
-- Added a reset mechanism to reposition the ball after each point 🔄
-- Displayed scores on screen using canvas text rendering 🖥️
+- Introduced `playerScore` and `aiScore` to track scores 
+- Added a reset mechanism to reposition the ball after each point 
+- Displayed scores on screen using canvas text rendering 
 - Implemented score detection:
-  - � Player scores when ball goes off the top
-  - 🤖 AI scores when ball goes off the bottom
+  - Player scores when ball goes off the top
+  - AI scores when ball goes off the bottom
 
 ### ⚙️ How It Works
 - Ball crossing top/bottom edge awards point to opponent
 - Ball resets to center after each point
 - Scores displayed at center of screen
 
-## 🤖 Computer AI Implementation 🧠
+## 🤖 Computer AI Implementation 
 
 ### 🧩 General Strategy
 Two-part AI system:
-1. ⏱️ **Reaction Time**: Artificial delay before responding
-2. 🎯 **Accuracy**: Random error factor in predictions
+1. **Reaction Time**: Artificial delay before responding
+2. **Accuracy**: Random error factor in predictions
 
 ### 🎚️ Difficulty Levels
 ```js
