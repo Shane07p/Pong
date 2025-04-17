@@ -4,25 +4,25 @@
 Introduce a basic AI-controlled paddle that competes against the player, creating a single-player game mode.
 
 ## ✨ Features Implemented
-- 🏓 Added AI paddle at the top of the canvas
-- 🧠 Simple tracking behavior based on ball direction
-- ⚡ Collision detection for AI paddle
-- 🔄 Ball now interacts with both player and AI paddles
-- 🚧 Boundary checking for AI movement
+- Added AI paddle at the top of the canvas
+- Simple tracking behavior based on ball direction
+- Collision detection for AI paddle
+- Ball now interacts with both player and AI paddles
+- Boundary checking for AI movement
 
 ## ⚙️ How It Works
 
 ### AI Movement Logic
 The AI paddle follows these rules:
-1. 🔍 Monitors the ball's horizontal direction (`ball.dx`)
-2. ⬅️ Moves left when ball is moving left
-3. ➡️ Moves right when ball is moving right
-4. 🛑 Stays within canvas boundaries
+1. Monitors the ball's horizontal direction (`ball.dx`)
+2. Moves left when ball is moving left
+3. Moves right when ball is moving right
+4. Stays within canvas boundaries
 
 ### Collision System
 - When ball contacts AI paddle:
-  - 🔽 Bounces downward (toward player)
-  - 🔄 Maintains realistic physics
+  - Bounces downward (toward player)
+  - Maintains realistic physics
 
 ## 📝 Code Implementation
 
