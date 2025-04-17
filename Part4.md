@@ -1,62 +1,33 @@
-# 🎮 Part 5: Add AI Opponent 🤖
+# 🏓 JavaScript Pong - Part 4: Add Paddle Physics
 
-## 🎯 Objective
-Introduce a basic AI-controlled paddle that competes against the player, creating a single-player game mode.
+Welcome to **Part 4** of the JavaScript Pong series!  
+This part adds paddles to the game and introduces basic collision between the ball and the paddles.
 
-## ✨ Features Implemented
-- Added AI paddle at the top of the canvas
-- Simple tracking behavior based on ball direction
-- Collision detection for AI paddle
-- Ball now interacts with both player and AI paddles
-- Boundary checking for AI movement
+## 🔧 What’s in Part 4
 
-## ⚙️ How It Works
+- Created a **Paddle** class with position, size, and movement speed.
+- Implemented **keyboard controls** for player movement.
+- Added **collision detection** between the ball and the paddle.
+- Reflected the ball’s velocity when it hits the paddle.
+- Limited paddle movement within the canvas bounds.
 
-### AI Movement Logic
-The AI paddle follows these rules:
-1. Monitors the ball's horizontal direction (`ball.dx`)
-2. Moves left when ball is moving left
-3. Moves right when ball is moving right
-4. Stays within canvas boundaries
+## 📂 Files Updated
 
-### Collision System
-- When ball contacts AI paddle:
-  - Bounces downward (toward player)
-  - Maintains realistic physics
+- `index.html`  
+  No major changes here — still links to the updated `pong.js`.
 
-## 📝 Code Implementation
+- `pong.js`  
+  - Added `Paddle` class.
+  - Created a `paddle` instance (player-controlled).
+  - Handled player input using `keyboard.left` and `keyboard.right`.
+  - Added collision check between ball and paddle.
+  - Ball bounces off the paddle using velocity inversion.
 
-```javascript
-// AI Paddle initialization
-const aiPaddle = {
-  x: canvas.width / 2,
-  y: 30,
-  width: 100,
-  height: 15,
-  speed: 5,
-  color: '#FF5555'
-};
+### 🎮 Paddle Movement
 
-// AI Movement Update
-function updateAI() {
-  if (ball.dx < 0 && aiPaddle.x > 0) {
-    aiPaddle.x -= aiPaddle.speed; // Move left
-  } else if (ball.dx > 0 && aiPaddle.x < canvas.width - aiPaddle.width) {
-    aiPaddle.x += aiPaddle.speed; // Move right
-  }
-}
-
-// Enhanced collision detection
-function checkAICollision() {
-  if (
-    ball.y - ball.radius <= aiPaddle.y + aiPaddle.height &&
-    ball.y + ball.radius >= aiPaddle.y &&
-    ball.x + ball.radius >= aiPaddle.x &&
-    ball.x - ball.radius <= aiPaddle.x + aiPaddle.width
-  ) {
-    ball.dy = Math.abs(ball.dy); // Reverse vertical direction
-    // Optional: Add speed variation based on hit position
-    const hitPosition = (ball.x - aiPaddle.x) / aiPaddle.width;
-    ball.dx += (hitPosition - 0.5) * 2; // -1 to 1 range
-  }
+```js
+if (keyboard.left) {
+  paddle.x -= paddle.speed * dt;
+} else if (keyboard.right) {
+  paddle.x += paddle.speed * dt;
 }
