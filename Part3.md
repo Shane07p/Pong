@@ -1,33 +1,46 @@
-# 🏓 JavaScript Pong - Part 3: Add Paddle Physics
+# 🎮 Pong- Part-3
 
-Welcome to **Part 3** of the JavaScript Pong series!  
-This part adds paddles to the game and introduces basic collision between the ball and the paddles.
+A minimalist 2D Pong game built using vanilla JavaScript and HTML5 Canvas. No external libraries. No AI. Pure 2-player arcade fun!
 
-## 🔧 What’s in Part 3
+---
 
-- Created a **Paddle** class with position, size, and movement speed.
-- Implemented **keyboard controls** for player movement.
-- Added **collision detection** between the ball and the paddle.
-- Reflected the ball’s velocity when it hits the paddle.
-- Limited paddle movement within the canvas bounds.
+## 🚀 Features
 
-## 📂 Files Updated
+- **Two-Player Gameplay**
+- **Scoring System**
+- **Victory Condition (First to 10)**
+- **Ball Reset After Each Score**
+- **Score Display on Screen**
+- **ESC Key to Quit to Menu**
 
-- `index.html`  
-  No major changes here — still links to the updated `pong.js`.
+---
 
-- `pong.js`  
-  - Added `Paddle` class.
-  - Created a `paddle` instance (player-controlled).
-  - Handled player input using `keyboard.left` and `keyboard.right`.
-  - Added collision check between ball and paddle.
-  - Ball bounces off the paddle using velocity inversion.
+## 🕹️ Controls
 
-### 🎮 Paddle Movement
+| Action              | Key        |
+|---------------------|------------|
+| Left Paddle Up      | `Q`        |
+| Left Paddle Down    | `A`        |
+| Right Paddle Up     | `P`        |
+| Right Paddle Down   | `L`        |
+| Quit to Menu        | `ESC`      |
+| Start 2P Game       | `2`        |
 
-```js
-if (keyboard.left) {
-  paddle.x -= paddle.speed * dt;
-} else if (keyboard.right) {
-  paddle.x += paddle.speed * dt;
-}
+---
+
+## 📦 Project Structure
+
+
+---
+
+## ⚙️ How It Works
+
+- The `Game.Runner` manages the game loop: `update()` + `draw()` at 60 FPS
+- Menu image is shown at startup prompting `1` or `2` (only `2` used)
+- Paddle inputs move left/right player
+- Ball bounces on paddles and walls
+- If the ball exits screen horizontally, opponent scores
+- First to reach **10 points** wins
+- Pressing `ESC` will quit back to the menu
+
+---
