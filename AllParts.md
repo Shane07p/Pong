@@ -32,7 +32,7 @@
 **Goal**: Add a player-controlled paddle using keyboard input.  
 **What’s inside**:
 - Paddle object with position and velocity
-- Arrow key or WASD control
+- Arrow key or QA/PL control
 - Paddle stays within the screen
 
 *Learning*: Handling user input, constraining movement, player control
